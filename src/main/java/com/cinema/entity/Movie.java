@@ -16,7 +16,7 @@ public class Movie extends BaseEntity{
     private String name;
     private double price;
     private LocalDate releaseDate;
-    
+
     @Enumerated(EnumType.STRING)
     private MovieState state;
 
