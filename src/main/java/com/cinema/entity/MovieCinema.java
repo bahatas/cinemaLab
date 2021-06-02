@@ -3,7 +3,6 @@ package com.cinema.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,7 +16,7 @@ import java.time.LocalDateTime;
 public class MovieCinema extends BaseEntity {
 
     @Column(columnDefinition = "TIMESTAMP")
-    private LocalDateTime localDateTime;
+    private LocalDateTime dateTime;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cinema_id")
@@ -29,6 +28,6 @@ public class MovieCinema extends BaseEntity {
     private Movie movie;
 
     public MovieCinema(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+        this.dateTime = localDateTime;
     }
 }

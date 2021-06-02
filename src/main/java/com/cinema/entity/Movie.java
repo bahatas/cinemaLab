@@ -19,19 +19,24 @@ import java.util.List;
 @NoArgsConstructor
 public class Movie extends BaseEntity{
 
-    private int duration; // normally it is Integer
     private String name;
-    private BigDecimal price;
+
     private LocalDate releaseDate;
 
-    @Enumerated(EnumType.STRING)
-    private MovieState state;
+    private Integer duration; // normally it is Integer
 
     @Column(columnDefinition = "text")
     private String summary;
 
     @Enumerated(EnumType.STRING)
     private MovieType type;
+
+    @Enumerated(EnumType.STRING)
+    private MovieState state;
+
+    private BigDecimal price;
+
+
 
     @ManyToMany()
     @JoinTable(
@@ -42,14 +47,12 @@ public class Movie extends BaseEntity{
     )
     private List<Genre> genreList = new ArrayList<>();
 
-    public Movie(int duration, String name, BigDecimal price,
-                 LocalDate releaseDate, MovieState state, String summary, MovieType type) {
-        this.duration = duration;
+    public Movie(String name, LocalDate releaseDate, Integer duration, MovieType type, MovieState state, BigDecimal price) {
         this.name = name;
-        this.price = price;
         this.releaseDate = releaseDate;
-        this.state = state;
-        this.summary = summary;
+        this.duration = duration;
         this.type = type;
+        this.state = state;
+        this.price = price;
     }
 }

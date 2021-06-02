@@ -1,9 +1,16 @@
 package com.cinema.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user_account")
+@Getter
+@Setter
+@NoArgsConstructor
 public class User extends BaseEntity{
 
    private String email;
@@ -11,7 +18,7 @@ public class User extends BaseEntity{
    private String username;
 
 
-   @OneToOne(fetch = FetchType.LAZY) // delete and try
+   @OneToOne(fetch = FetchType.LAZY,cascade = {CascadeType.PERSIST,CascadeType.MERGE}) // delete and try
    @JoinColumn(name = "account_details_id")
    private Account account;
 

@@ -8,15 +8,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table
 @Setter
 @Getter
 @NoArgsConstructor
+@Table(name = "account_details")
 public class Account extends BaseEntity{
 
 
     private String name;
-    private String adress;
+    private String address;
     private String country;
     private String city;
     private String state;
@@ -31,11 +31,11 @@ public class Account extends BaseEntity{
     @OneToOne(mappedBy = "account")
     private User user;
 
-    public Account(String name, String adress,
+    public Account(String name, String address,
                    String country, String city,
                    String state, int age, String postalCode, UserRole role) {
         this.name = name;
-        this.adress = adress;
+        this.address = address;
         this.country = country;
         this.city = city;
         this.state = state;
