@@ -2,19 +2,26 @@ package com.cinema.entity;
 
 import com.cinema.utility.MovieState;
 import com.cinema.utility.MovieType;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table
+@Getter
+@Setter
+@NoArgsConstructor
 public class Movie extends BaseEntity{
 
     private int duration; // normally it is Integer
     private String name;
-    private double price;
+    private BigDecimal price;
     private LocalDate releaseDate;
 
     @Enumerated(EnumType.STRING)
@@ -35,7 +42,14 @@ public class Movie extends BaseEntity{
     )
     private List<Genre> genreList = new ArrayList<>();
 
-
-
-
+    public Movie(int duration, String name, BigDecimal price,
+                 LocalDate releaseDate, MovieState state, String summary, MovieType type) {
+        this.duration = duration;
+        this.name = name;
+        this.price = price;
+        this.releaseDate = releaseDate;
+        this.state = state;
+        this.summary = summary;
+        this.type = type;
+    }
 }
